@@ -23,6 +23,9 @@
 		&.active{
 			color: blue;
 		}
+		&:hover{
+			cursor: pointer;
+		}
 	  }
 	}
   }
