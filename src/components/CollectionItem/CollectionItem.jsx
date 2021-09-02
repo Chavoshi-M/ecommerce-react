@@ -1,5 +1,10 @@
 import './CollectionItem.scss'
-const CollectionItem = ({id,name,price,imageUrl}) => {
+import Button from '../UI/Button/Button'
+import { addToCart } from '../../redux/cart/actions'; 
+import { useDispatch } from 'react-redux';
+const CollectionItem = ({item}) => {
+	const {name,price,imageUrl}=item;
+	const dispatch = useDispatch();
 	return (
 		<div className="collection-item">
 			<div className="image"
@@ -15,6 +20,7 @@ const CollectionItem = ({id,name,price,imageUrl}) => {
 					{price}
 				</span>
 			</div>
+				<Button inverted onClick={()=>dispatch(addToCart(item))}>Add To Cart</Button>
 		</div>
 	);
 }
