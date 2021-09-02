@@ -1,20 +1,23 @@
 import Button from '../UI/Button/Button'
-import './CartDropDown.scss'
-import {useSelector} from 'react-redux'
+import './CartDropDown.scss' 
+import {connect} from 'react-redux'
 import CartItem from '../CartItem/CartItem'
-const CartDropDown = () => {
-	const cartItems = useSelector(state => state.cart.cartItems)
-	console.log('cartItems',cartItems)
+import {selectCartItems} from '../../redux/cart/selectors'
+const CartDropDown = (props) => {
+	
 	return (
 		<div className='cart-dropdown'>
 			<div className='cart-items'>
 				{
-					cartItems.map(item=> <CartItem key={item.id} item={item}/>)
+					props.cartItems.map(item=> <CartItem key={item.id} item={item}/>)
 				}
 			</div>
 			<Button>Go To Checkout</Button>
 		</div>
 	);
 }
+const mapStetToProps = state=>({
+	cartItems:selectCartItems(state)
+})
  
-export default CartDropDown;
+export default connect(mapStetToProps)(CartDropDown);
