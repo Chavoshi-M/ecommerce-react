@@ -1,24 +1,29 @@
-import './CheckoutItems.scss'
+import{connect} from 'react-redux'
+import { removeFromCart } from '../../redux/cart/actions';
+import './CheckoutItems.scss' 
 const CheckOutItems = (props) => {
 	return (
 		<div className='checkout-item'>
 			<div className='image-container'>
-				<img src={props.imageUrl}/>
+				<img src={props.cartItem.imageUrl}/>
 			</div>
 			<span className='name'>
-				 {props.name}
+				 {props.cartItem.name}
 			</span>
 			<span className='quantity'>
-				{props.quantity}
+				{props.cartItem.quantity}
 			</span>
 			<span className='price'>
-				{props.price}
+				{props.cartItem.price}
 			</span>
-			<div className='remove-button'>
+			<div className='remove-button' onClick={()=>props.removeItem(props.cartItem)}>
 				&#10005;
 			</div>
 		</div>
 	);
 }
  
-export default CheckOutItems;
+const mapDispatchToProps = dispatch=>({
+	removeItem :item=>dispatch(removeFromCart(item))
+})
+export default connect(null,mapDispatchToProps)(CheckOutItems);

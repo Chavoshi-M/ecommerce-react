@@ -35,7 +35,7 @@ const Checkout = (props) => {
 			</div>
 			{
 				props.cartItems.map(item=>(
-					<CheckOutItems key={item.id} {...item}/>
+					<CheckOutItems key={item.id} cartItem={item}/>
 				))
 			}
 			<div className='total'>
