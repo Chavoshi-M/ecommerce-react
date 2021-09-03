@@ -6,6 +6,8 @@ import AuthenticationPage from './pages/AuthenticationPage/AuthenticationPage';
 import { connect } from 'react-redux';
 import {setCurrentUser} from './redux/user/action'
 import Homepage from './pages/homepage/HomePage';
+import {selectCurrrentUser} from './redux/user/selectors';
+
 import ShopPage from './pages/shoppage/ShopPage';
 import {auth, createUserProfileDocument} from './firebase/firebase.utils';
 
@@ -43,8 +45,8 @@ class  App extends Component {
   }
 }
 
-const mapSttaeToProps = ({user})=>({
-  currentUser:user.currentUser
+const mapSttaeToProps = (state)=>({
+  currentUser:selectCurrrentUser(state)
 })
 const mapDispatchToProps = dispatch=>({
   setCurrentUser:user=>dispatch(setCurrentUser(user))
