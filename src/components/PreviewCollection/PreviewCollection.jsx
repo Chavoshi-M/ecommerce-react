@@ -12,5 +12,5 @@ const PreviewCollection = ({title,items}) => {
 		</div>
 	);
 }
- 
+
 export default PreviewCollection;

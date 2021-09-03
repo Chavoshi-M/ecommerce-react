@@ -2,7 +2,7 @@
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import './CollectionOverview.scss'
-import {selectShopCollections} from '../../redux/Shop/selectors'
+import {selectCollectionForPreview} from '../../redux/Shop/selectors'
 import PreviewCollection from '../PreviewCollection/PreviewCollection';
 
 const CollectionOverview = (props) => {
@@ -15,6 +15,6 @@ const CollectionOverview = (props) => {
 	);
 }
 const mapDispatchToProps = createStructuredSelector({
-	collections:selectShopCollections
+	collections:selectCollectionForPreview
 })
 export default connect(mapDispatchToProps)(CollectionOverview);

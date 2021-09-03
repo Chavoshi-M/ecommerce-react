@@ -5,6 +5,7 @@ export  const  selectShopCollections = createSelector(
 	[selectShop],
 	shop=>shop.collections
 )
+
 export const selectCollection = collectionUrlParam=>
 	createSelector(
 	[selectShopCollections],
@@ -13,4 +14,8 @@ export const selectCollection = collectionUrlParam=>
 		console.log(collections,'collections');
 		return collections[collectionUrlParam]
 	}
+)
+export const selectCollectionForPreview = createSelector(
+	[selectShopCollections],
+	collections=>Object.keys(collections).map(key=>collections[key])
 )

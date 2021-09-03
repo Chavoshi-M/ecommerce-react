@@ -1,6 +1,7 @@
 import {connect} from 'react-redux'
 import {createStructuredSelector} from 'reselect'
 import CheckOutItems from '../../components/CheckoutItems/CheckoutItems'
+import StripeButton from '../../components/StripeButton/StripeButton'
 import {selectCartItems,selectCartTotal} from '../../redux/cart/selectors'
 import './Checkout.scss'
 const Checkout = (props) => {
@@ -39,9 +40,13 @@ const Checkout = (props) => {
 				))
 			}
 			<div className='total'>
-				<span>Total : {props.total}</span>
+				<span>Total : ${props.total}</span>
 
-			</div>
+			</div>{/* 
+			<div className='test-warning'>
+				please use
+			</div> */}
+			<StripeButton price={props.total}/>
 		</div>
 	);
 }
