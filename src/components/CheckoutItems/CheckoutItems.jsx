@@ -1,5 +1,5 @@
 import{connect} from 'react-redux'
-import { removeFromCart } from '../../redux/cart/actions';
+import { addToCart, removeFromCart, removeItremFromCart } from '../../redux/cart/actions';
 import './CheckoutItems.scss' 
 const CheckOutItems = (props) => {
 	return (
@@ -11,7 +11,11 @@ const CheckOutItems = (props) => {
 				 {props.cartItem.name}
 			</span>
 			<span className='quantity'>
-				{props.cartItem.quantity}
+				<div className='arrow' onClick={()=>props.removeItremFromCart(props.cartItem)}>&#10094;</div>
+				<span className='value'>
+					{props.cartItem.quantity}
+				</span>
+				<div className='arrow' onClick={()=>props.addItremToCart(props.cartItem)}>&#10095;</div>
 			</span>
 			<span className='price'>
 				{props.cartItem.price}
@@ -24,6 +28,9 @@ const CheckOutItems = (props) => {
 }
  
 const mapDispatchToProps = dispatch=>({
-	removeItem :item=>dispatch(removeFromCart(item))
+	removeItem :item=>dispatch(removeFromCart(item)),
+	removeItremFromCart:item=>dispatch(removeItremFromCart(item)),
+	addItremToCart:item=>dispatch(addToCart(item)),
+
 })
 export default connect(null,mapDispatchToProps)(CheckOutItems);
