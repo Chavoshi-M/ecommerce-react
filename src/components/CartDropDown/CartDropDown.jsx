@@ -4,8 +4,10 @@ import Button from '../UI/Button/Button'
 import './CartDropDown.scss' 
 import CartItem from '../CartItem/CartItem'
 import {selectCartItems} from '../../redux/cart/selectors'
+import {toggleCartHidden} from '../../redux/cart/actions'
+
 const CartDropDown = (props) => {
-	
+	console.log(props.dispatch)
 	return (
 		<div className='cart-dropdown'>
 			<div className='cart-items'>
@@ -17,7 +19,10 @@ const CartDropDown = (props) => {
 					</span>)
 				}
 			</div>
-			<Button onClick={()=>props.history.push('/checkout')}>Go To Checkout</Button>
+			<Button onClick={()=>{
+				props.history.push('/checkout');
+				props.dispatch(toggleCartHidden())
+			}}>Go To Checkout</Button>
 		</div>
 	);
 }
