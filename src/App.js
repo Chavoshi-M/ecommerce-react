@@ -10,8 +10,7 @@ import {selectCurrrentUser} from './redux/user/selectors';
 
 import ShopPage from './pages/shoppage/ShopPage';
 import {auth, createUserProfileDocument} from './firebase/firebase.utils';
-import Checkout from './pages/Checkout/Checkout';
-
+import Checkout from './pages/Checkout/Checkout'; 
 class  App extends Component {
   unsubscribeFromAuth = null;
   componentDidMount(){
@@ -26,7 +25,7 @@ class  App extends Component {
           }) 
         })
       } 
-      setCurrentUser(userAuth)
+      setCurrentUser(userAuth) 
     });
   }
   componentWillUnmount(){
