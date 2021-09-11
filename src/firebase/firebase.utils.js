@@ -55,6 +55,17 @@ export const convertCollectionsSnapshotToMaps =collections=>{
 	},{})
 }
 
+export const getCurrentUser = ()=>{
+	return new Promise((res,rej)=>{
+		const unsubscrib=auth.onAuthStateChanged(userAut=>{
+			unsubscrib()
+			res(userAut)	 
+		})
+	},rej=>{
+
+	})
+}
+
 export const addCollectionAndDocs =async (collectionKey,data)=>{
 	const collectionRef = firestore.collection(collectionKey);
 	console.log(collectionRef);
@@ -66,9 +77,9 @@ export const addCollectionAndDocs =async (collectionKey,data)=>{
 	})
 	return await batch.commit()
 }
-const provider = new firebase.auth.GoogleAuthProvider();
-provider.setCustomParameters({promps:'select_account'});
-export const signInWhithGoogle = ()=>auth.signInWithPopup(provider);
+export const googleProvider = new firebase.auth.GoogleAuthProvider();
+googleProvider.setCustomParameters({promps:'select_account'});
+export const signInWhithGoogle = ()=>auth.signInWithPopup(googleProvider);
 
 export default firebase;
 
